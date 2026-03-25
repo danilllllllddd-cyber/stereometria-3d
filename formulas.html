@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Формулы - Стереометрия в 3D</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .formula-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .formula-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .formula-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .formula-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .formula-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .formula-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        
+        .formula-header .icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .formula-body {
+            padding: 20px;
+        }
+        
+        .formula-item {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .formula-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .formula-name {
+            font-weight: bold;
+            color: #3a6ea5;
+            margin-bottom: 8px;
+        }
+        
+        .formula-expression {
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            background: #f5f5f7;
+            padding: 8px 12px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .formula-note {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 5px;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            color: #1a1a2e;
+            margin-bottom: 10px;
+            border-left: 5px solid #3a6ea5;
+            padding-left: 20px;
+        }
+        
+        .section-subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            padding-left: 25px;
+        }
+        
+        .all-formulas-table {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            margin-top: 40px;
+        }
+        
+        .all-formulas-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .all-formulas-table th {
+            background: #1a1a2e;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        
+        .all-formulas-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .all-formulas-table tr:hover {
+            background: #f5f5f7;
+        }
+        
+        .formula-math {
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .formula-grid {
+                grid-template-columns: 1fr;
+            }
+            .all-formulas-table {
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">📐 Стереометрия 3D</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Главная</a></li>
+                <li class="dropdown">
+                    <a href="#">Модели ▼</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="models/cube.html">Куб</a></li>
+                        <li><a href="models/tetra.html">Тетраэдр</a></li>
+                        <li><a href="models/octa.html">Октаэдр</a></li>
+                        <li><a href="models/pyramid.html">Пирамида</a></li>
+                        <li><a href="models/cone.html">Конус</a></li>
+                        <li><a href="models/cylinder.html">Цилиндр</a></li>
+                        <li><a href="models/sphere.html">Сфера</a></li>
+                    </ul>
+                </li>
+                <li><a href="formulas.html">Формулы</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <main>
+        <div class="page-header">
+            <h1>📐 Все формулы стереометрии</h1>
+            <p>Площади поверхностей и объемы геометрических тел</p>
+        </div>
+        
+        <div class="formula-section">
+            <h2 class="section-title">📦 Многогранники</h2>
+            <p class="section-subtitle">Куб, призма, пирамида и другие многогранники</p>
+            
+            <div class="formula-grid">
+                <div class="formula-card">
+                    <div class="formula-header">
+                        <div class="icon">🧊</div>
+                        <h2>Куб</h2>
+                    </div>
+                    <div class="formula-body">
+                        <div class="formula-item">
+                            <div class="formula-name">Площадь поверхности</div>
+                            <div class="formula-expression">S = 6a²</div>
+                        </div>
+                        <div class="formula-item">
+                            <div class="formula-name">Объем</div>
+                            <div class="formula-expression">V = a³</div>
+                        </div>
+                        <div class="formula-item">
+                            <div class="formula-name">Диагональ грани</div>
+                            <div class="formula-expression">d = a√2</div>
+                        </div>
+                        <div class="formula-item">
+                            <div class="formula-name">Диагональ куба</div>
+                            <div class="formula-expression">D = a√3</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="formula-card">
+                    <div class="formula-header">
+                        <div class="icon">▲</div>
+                        <h2>Правильный тетраэдр</h2>
+                    </div>
+                    <div class="formula-body">
+                        <div class="formula-item">
+                            <div class="formula-name">Площадь поверхности</div>
+                            <div class="formula-expression">S = a²√3</div>
+                        </div>
+                        <div class="formula-item">
+                            <div class="formula-name">Объем</div>
+                            <div class="formula-expression">V = a³√2 / 12</div>
+                        </div>
+                        <div class="formula-item">
+                            <div class="formula-name">Высота</div>
+                            <div class="formula-expression">h = a√(2/3)</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="formula-card">
+                    <div class="formula-header">
+                        <div class="icon">🔷</div>
+                        <h2>Правильный октаэдр</h2>
+                    </div>
+                    <div class="formula-body">
+                        <div class="formula-item">
+                            <div class="formula-name">Площадь поверхности</div>
+                            <div class="formula-expression">S = 2a²√3</div>
+                        </div>
+                        <div class="formula-item">
+                            <div class="formula-name">Объем</div>
+                            <div class="formula-expression">V = a³√2 / 3</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="formula-card">
+                    <div class="formula-header">
+                        <div class="icon">🗿</div>
+                        <h2>Правильная пирамида</h2>
+                    </div>
+                    <div class="formula-body">
+                        <div class="formula-item">
+                            <div class="formula-name">Площадь основания</div>
+                            <div class="formula-expression">Sосн = зависит от формы</div>
+                        </div>
+                        <div class="formula-item">
+                            <div class="formula-name">Площадь боковой поверхности</div>
+                            <div class="formula-expression">Sбок = ½·Pосн·l</div>
+                            <div class="formula-note">l — апофема</div>
+                        </div>
+                        <div class="formula-item">
+                            <div class="formula-name">Объем</div>
+                            <div class="formula-expression">V = ⅓·Sосн·h</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="formula-card">
+                    <div class="formula-header">
+                        <div class="icon">📐</div>
+                        <h2>Призма</h2>
+                    </div>
+                    <div class="formula-body">
+                        <div class="formula-item">
+                            <div class="formula-name">Площадь боковой поверхности</div>
+                            <div class="formula-expression">Sбок = Pосн·h</div>
+                        </div>
+                        <div class="formula-item">
+                            <div class="formula-name">Площадь полной поверхности</div>
+                            <div class="formula-expression">Sполн = Sбок + 2Sосн</div>
+                        </div>
+                        <div class="formula-item">
+                            <div class="formula-name">Объем</div>
+                            <div class="formula-expression">V = Sосн·h</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="formula-card">
+                    <div class="formula-header">
+                        <div class="icon">🧊</div>
+                        <h2>Прямоугольный параллелепипед</h2>
+                    </div>
+                    <div class="formula-body">
+                        <div class="formula-item">
+                            <div class="formula-name">Площадь поверхности</div>
+                            <div class="formula-expression">S = 2(ab + ac + bc)</div>
+                        </div>
+                        <div class="formula-item">
+                            <div class="formula-name">Объем</div>
+                            <div class="formula-expression">V = abc</div>
+                        </div>
+                        <div class="formula-item">
+                            <div class="formula-name">Диагональ</div>
+                            <div class="formula-expression">d = √(a² + b² + c²)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h2 class="section-title" style="margin-top: 50px;">🌀 Тела вращения</h2>
+            <p class="section-subtitle">Цилиндр, конус, шар и их сечения</p>
+            
+            <div class="formula-grid">
+                <div class="formula-card">
+                    <div class="formula-header">
+                        <div class="icon">🎩</div>
+                        <h2>Цилиндр</h2>
+                    </div>
+                    <div class="formula-body">
+                        <div class="formula-item">
+                            <div class="formula-name">Площадь боковой поверхности</div>
+                            <div class="formula-expression">Sбок = 2πRh</div>
+                        </div>
+                        <div class="formula-item">
+                            <div class="formula-name">Площадь полной поверхности</div>
+                            <div class="formula-expression">Sполн = 2πR(R + h)</div>
+                        </div>
+                        <div class="formula-item">
+                            <div class="formula-name">Объем</div>
+                            <div class="formula-expression">V = πR²h</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="formula-card">
+                    <div class="formula-header">
+                        <div class="icon">📐</div>
+                        <h2>Конус</h2>
+                    </div>
+                    <div class="formula-body">
+                        <div class="formula-item">
+                            <div class="formula-name">Образующая</div>
+                            <div class="formula-expression">l = √(R² + h²)</div>
+                        </div>
+                        <div class="formula-item">
+                            <div class="formula-name">Площадь боковой поверхности</div>
+                            <div class="formula-expression">Sбок = πRl</div>
+                        </div>
+                        <div class="formula-item">
+                            <div class="formula-name">Площадь полной поверхности</div>
+                            <div class="formula-expression">Sполн = πR(R + l)</div>
+                        </div>
+                        <div class="formula-item">
+                            <div class="formula-name">Объем</div>
+                            <div class="formula-expression">V = ⅓·πR²h</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="formula-card">
+                    <div class="formula-header">
+                        <div class="icon">⚽</div>
+                        <h2>Сфера / Шар</h2>
+                    </div>
+                    <div class="formula-body">
+                        <div class="formula-item">
+                            <div class="formula-name">Площадь поверхности сферы</div>
+                            <div class="formula-expression">S = 4πR²</div>
+                        </div>
+                        <div class="formula-item">
+                            <div class="formula-name">Объем шара</div>
+                            <div class="formula-expression">V = ⁴⁄₃·πR³</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="formula-card">
+                    <div class="formula-header">
+                        <div class="icon">📏</div>
+                        <h2>Усеченный конус</h2>
+                    </div>
+                    <div class="formula-body">
+                        <div class="formula-item">
+                            <div class="formula-name">Образующая</div>
+                            <div class="formula-expression">l = √(h² + (R - r)²)</div>
+                        </div>
+                        <div class="formula-item">
+                            <div class="formula-name">Площадь боковой поверхности</div>
+                            <div class="formula-expression">Sбок = π(R + r)l</div>
+                        </div>
+                        <div class="formula-item">
+                            <div class="formula-name">Объем</div>
+                            <div class="formula-expression">V = ⅓·πh(R² + Rr + r²)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h2 class="section-title" style="margin-top: 50px;">📊 Сводная таблица</h2>
+            
+            <div class="all-formulas-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Фигура</th>
+                            <th>Площадь поверхности</th>
+                            <th>Объем</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Куб</strong> (ребро a)</td><td>S = 6a²</td><td>V = a³</td></tr>
+                        <tr><td><strong>Прямоугольный параллелепипед</strong> (a,b,c)</td><td>S = 2(ab+ac+bc)</td><td>V = abc</td></tr>
+                        <tr><td><strong>Призма</strong></td><td>Sполн = Sбок + 2Sосн</td><td>V = Sосн·h</td></tr>
+                        <tr><td><strong>Пирамида</strong></td><td>Sполн = Sбок + Sосн</td><td>V = ⅓·Sосн·h</td></tr>
+                        <tr><td><strong>Правильный тетраэдр</strong> (ребро a)</td><td>S = a²√3</td><td>V = a³√2/12</td></tr>
+                        <tr><td><strong>Правильный октаэдр</strong> (ребро a)</td><td>S = 2a²√3</td><td>V = a³√2/3</td></tr>
+                        <tr><td><strong>Цилиндр</strong> (R, h)</td><td>Sполн = 2πR(R+h)</td><td>V = πR²h</td></tr>
+                        <tr><td><strong>Конус</strong> (R, h)</td><td>Sполн = πR(R+√(R²+h²))</td><td>V = ⅓·πR²h</td></tr>
+                        <tr><td><strong>Сфера / Шар</strong> (R)</td><td>S = 4πR²</td><td>V = ⁴⁄₃·πR³</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>© 2024 Стереометрия в 3D | Вращайте модели мышкой</p>
+    </footer>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>
