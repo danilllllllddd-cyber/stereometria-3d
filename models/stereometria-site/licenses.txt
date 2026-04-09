@@ -1,7 +1,0 @@
-<a href="https://www.flaticon.com/free-icons/3d-cube" title="3d cube icons">3d cube icons created by Groovy Icons - Flaticon</a>
-<a href="https://www.flaticon.com/free-icons/cone" title="cone icons">Cone icons created by Groovy Icons - Flaticon</a>
-<a href="https://www.flaticon.com/free-icons/cylinder" title="cylinder icons">Cylinder icons created by Freepik - Flaticon</a>
-<a href="https://www.flaticon.com/free-icons/pyramid" title="pyramid icons">Pyramid icons created by LAFS - Flaticon</a>
-<a href="https://www.flaticon.com/free-icons/sphere" title="sphere icons">Sphere icons created by Good Ware - Flaticon</a>
-<a href="https://www.flaticon.com/free-icons/octahedron" title="octahedron icons">Octahedron icons created by Nadiinko - Flaticon</a>
-<a href="https://www.flaticon.com/free-icons/tetrahedron" title="tetrahedron icons">Tetrahedron icons created by Pixel perfect - Flaticon</a>
