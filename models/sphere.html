@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сфера - Стереометрия в 3D</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .info-panel {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .formula {
+            font-size: 1.2rem;
+            font-family: monospace;
+            background: #e9ecef;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .property-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .property-card {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-left: 3px solid #44aaff;
+        }
+        .property-card strong {
+            color: #44aaff;
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">Стереометрия 3D</a>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Главная</a></li>
+                <li class="dropdown">
+                    <a href="#">Модели ▼</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="cube.html">Куб</a></li>
+                        <li><a href="tetra.html">Тетраэдр</a></li>
+                        <li><a href="octa.html">Октаэдр</a></li>
+                        <li><a href="pyramid.html">Пирамида</a></li>
+                        <li><a href="cone.html">Конус</a></li>
+                        <li><a href="cylinder.html">Цилиндр</a></li>
+                        <li><a href="sphere.html">Сфера</a></li>
+                    </ul>
+                </li>
+                <li><a href="../formulas.html">Формулы</a></li>
+                <li><a href="../licenses.html">Лицензии</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <main>
+        <div class="page-header">
+            <h1>Сфера и шар</h1>
+            <p>Сфера — поверхность, шар — тело, ограниченное сферой</p>
+        </div>
+        
+        <div class="content-section">
+            <div class="model-container" id="sphere-container">
+                <div class="model-info">
+                    🖱️ Вращайте мышкой | 🔍 Приближайте колесиком
+                </div>
+            </div>
+            
+            <div class="info-panel">
+                <h2>Характеристики сферы и шара</h2>
+                <div class="property-list">
+                    <div class="property-card">
+                        <strong>Радиус</strong>
+                        R
+                    </div>
+                    <div class="property-card">
+                        <strong>Диаметр</strong>
+                        D = 2R
+                    </div>
+                    <div class="property-card">
+                        <strong>Площадь поверхности сферы</strong>
+                        S = 4πR²
+                    </div>
+                    <div class="property-card">
+                        <strong>Объем шара</strong>
+                        V = ⁴⁄₃·πR³
+                    </div>
+                    <div class="property-card">
+                        <strong>Длина окружности большого круга</strong>
+                        C = 2πR
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-panel">
+                <h2>Теория</h2>
+                <p><strong>Сфера</strong> — это множество точек пространства, равноудаленных от одной точки (центра). <strong>Шар</strong> — это множество точек, расстояние от которых до центра не превышает радиуса.</p>
+                <p>Сечение шара плоскостью — круг. Сечение, проходящее через центр шара, называется большим кругом.</p>
+                
+                <div class="formula">
+                    Основные формулы:<br>
+                    Площадь поверхности сферы: S = 4πR²<br>
+                    Объем шара: V = ⁴⁄₃·πR³
+                </div>
+            </div>
+            
+            <div class="info-panel">
+                <h2>Интересные факты</h2>
+                <ul>
+                    <li>Все точки сферы равноудалены от центра.</li>
+                    <li>Сфера имеет бесконечное количество осей симметрии (любая прямая, проходящая через центр).</li>
+                    <li>Шар имеет наименьшую площадь поверхности среди всех тел заданного объема.</li>
+                    <li>Вписанный в куб шар касается всех его граней.</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>© 2026 Стереометрия в 3D | Вращайте модели мышкой</p>
+    </footer>
+    
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.128.0/build/three.module.js"
+            }
+        }
+    </script>
+    
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'https://unpkg.com/three@0.128.0/examples/jsm/controls/OrbitControls.js';
+        
+        const container = document.getElementById('sphere-container');
+        const width = container.clientWidth;
+        const height = container.clientHeight;
+        
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0xffffff);
+        
+        const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+        camera.position.set(3, 2, 4);
+        
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(width, height);
+        container.appendChild(renderer.domElement);
+        
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = 0.8;
+        
+        // Свет
+        const ambientLight = new THREE.AmbientLight(0x405070);
+        scene.add(ambientLight);
+        
+        const dirLight = new THREE.DirectionalLight(0xffffff, 1.2);
+        dirLight.position.set(2, 3, 2);
+        scene.add(dirLight);
+        
+        const fillLight = new THREE.PointLight(0x88aaff, 0.5);
+        fillLight.position.set(-1, 1, -1);
+        scene.add(fillLight);
+        
+        const radius = 1.4;
+        
+        // Основная сфера (прозрачная)
+        const geometry = new THREE.SphereGeometry(radius, 128, 128);
+        const material = new THREE.MeshPhongMaterial({
+            color: 0x44aaff,
+            transparent: true,
+            opacity: 0.3,
+            side: THREE.DoubleSide,
+            emissive: 0x004466,
+            shininess: 90
+        });
+        const sphere = new THREE.Mesh(geometry, material);
+        scene.add(sphere);
+        
+        // Каркасная сетка (для наглядности)
+        const wireframeMat = new THREE.MeshBasicMaterial({
+            color: 0x88ccff,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.2
+        });
+        const sphereWire = new THREE.Mesh(geometry, wireframeMat);
+        scene.add(sphereWire);
+        
+        // Меридианы (вертикальные линии)
+        const meridians = [0, 45, 90, 135, 180];
+        meridians.forEach(angle => {
+            const points = [];
+            for (let i = -90; i <= 90; i += 5) {
+                const lat = i * Math.PI / 180;
+                const lon = angle * Math.PI / 180;
+                const x = radius * Math.cos(lat) * Math.cos(lon);
+                const y = radius * Math.sin(lat);
+                const z = radius * Math.cos(lat) * Math.sin(lon);
+                points.push(new THREE.Vector3(x, y, z));
+            }
+            const geo = new THREE.BufferGeometry().setFromPoints(points);
+            const mat = new THREE.LineBasicMaterial({ color: 0xffaa66 });
+            const meridian = new THREE.Line(geo, mat);
+            scene.add(meridian);
+        });
+        
+        // Параллели (горизонтальные окружности)
+        const latitudes = [-60, -30, 0, 30, 60];
+        latitudes.forEach(lat => {
+            const r = radius * Math.cos(lat * Math.PI / 180);
+            const y = radius * Math.sin(lat * Math.PI / 180);
+            const points = [];
+            for (let i = 0; i <= 360; i += 10) {
+                const lon = i * Math.PI / 180;
+                const x = r * Math.cos(lon);
+                const z = r * Math.sin(lon);
+                points.push(new THREE.Vector3(x, y, z));
+            }
+            const geo = new THREE.BufferGeometry().setFromPoints(points);
+            const mat = new THREE.LineBasicMaterial({ color: 0x88aaff });
+            const parallel = new THREE.Line(geo, mat);
+            scene.add(parallel);
+        });
+        
+        // Экватор (выделяем ярче)
+        const equatorPoints = [];
+        for (let i = 0; i <= 360; i += 5) {
+            const lon = i * Math.PI / 180;
+            const x = radius * Math.cos(lon);
+            const z = radius * Math.sin(lon);
+            equatorPoints.push(new THREE.Vector3(x, 0, z));
+        }
+        const equatorGeo = new THREE.BufferGeometry().setFromPoints(equatorPoints);
+        const equatorMat = new THREE.LineBasicMaterial({ color: 0xffaa88, linewidth: 2 });
+        const equator = new THREE.Line(equatorGeo, equatorMat);
+        scene.add(equator);
+        
+        // Оси координат
+        const axesHelper = new THREE.AxesHelper(2.2);
+        axesHelper.material.transparent = true;
+        axesHelper.material.opacity = 0.4;
+        scene.add(axesHelper);
+        
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            renderer.render(scene, camera);
+        }
+        animate();
+        
+        window.addEventListener('resize', () => {
+            const newWidth = container.clientWidth;
+            const newHeight = container.clientHeight;
+            camera.aspect = newWidth / newHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(newWidth, newHeight);
+        });
+    </script>
+</body>
+</html>
