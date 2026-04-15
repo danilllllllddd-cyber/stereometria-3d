@@ -5,3 +5,4 @@
 <a href="https://www.flaticon.com/free-icons/sphere" title="sphere icons">Sphere icons created by Good Ware - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/octahedron" title="octahedron icons">Octahedron icons created by Nadiinko - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/tetrahedron" title="tetrahedron icons">Tetrahedron icons created by Pixel perfect - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/prism" title="prism icons">Prism icons created by Freepik - Flaticon</a>
