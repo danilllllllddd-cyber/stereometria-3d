@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задачи - Стереометрия в 3D</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .tasks-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            color: #1a1a2e;
+            margin-bottom: 10px;
+            border-left: 5px solid #3a6ea5;
+            padding-left: 20px;
+        }
+        
+        .section-subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            padding-left: 25px;
+        }
+        
+        .task-category {
+            margin-bottom: 50px;
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .category-header h2 {
+            font-size: 1.6rem;
+            color: #1a1a2e;
+        }
+        
+        .category-badge {
+            background: #3a6ea5;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .tasks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+        
+        .task-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .task-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        }
+        
+        .task-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 15px 20px;
+        }
+        
+        .task-header h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+        
+        .task-number {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 2px 10px;
+            font-size: 0.7rem;
+            margin-top: 8px;
+        }
+        
+        .task-difficulty {
+            display: inline-block;
+            font-size: 0.7rem;
+            padding: 3px 10px;
+            border-radius: 15px;
+            margin-top: 8px;
+            margin-left: 8px;
+        }
+        
+        .difficulty-easy { background: #4caf50; }
+        .difficulty-medium { background: #ff9800; }
+        .difficulty-hard { background: #f44336; }
+        
+        .task-body {
+            padding: 20px;
+        }
+        
+        .task-condition {
+            background: #f5f5f7;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .task-solution {
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+            margin-top: 10px;
+        }
+        
+        .solution-btn {
+            background: #3a6ea5;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: background 0.3s;
+        }
+        
+        .solution-btn:hover {
+            background: #2c5a8c;
+        }
+        
+        .solution-content {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: #e8f0fe;
+            border-radius: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .solution-content.show {
+            display: block;
+        }
+        
+        .task-answer {
+            margin-top: 12px;
+            padding: 10px;
+            background: #d4edda;
+            border-radius: 8px;
+            color: #155724;
+            font-weight: bold;
+        }
+        
+        .reference-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: #3a6ea5;
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+        
+        .reference-link:hover {
+            text-decoration: underline;
+        }
+        
+        .info-panel {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        
+        .formula-grid-ref {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .tasks-grid {
+                grid-template-columns: 1fr;
+            }
+            .category-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Стереометрия 3D</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Главная</a></li>
+                <li class="dropdown">
+                    <a href="#">Модели ▼</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="models/cube.html">Куб</a></li>
+                        <li><a href="models/prism.html">Призма</a></li>
+                        <li><a href="models/tetra.html">Тетраэдр</a></li>
+                        <li><a href="models/octa.html">Октаэдр</a></li>
+                        <li><a href="models/pyramid.html">Пирамида</a></li>
+                        <li><a href="models/cone.html">Конус</a></li>
+                        <li><a href="models/cylinder.html">Цилиндр</a></li>
+                        <li><a href="models/sphere.html">Сфера</a></li>
+                    </ul>
+                </li>
+                <li><a href="formulas.html">Формулы</a></li>
+                <li><a href="tasks.html">Задачи</a></li>
+                <li><a href="licenses.html">Лицензии</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <main>
+        <div class="page-header">
+            <h1>Задачи по стереометрии</h1>
+            <p>3 задачи для каждой геометрической фигуры</p>
+        </div>
+        
+        <div class="tasks-section">
+            <!-- ==================== КУБ ==================== -->
+            <div class="task-category">
+                <div class="category-header">
+                    <h2>Куб</h2>
+                    <span class="category-badge">3 задачи</span>
+                </div>
+                <div class="tasks-grid">
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Куб — Задача №1</h3>
+                            <span class="task-number">Легкий уровень</span>
+                            <span class="task-difficulty difficulty-easy">★☆☆</span>
+                        </div>
+                        <div class="task-body">
+                            <div class="task-condition">
+                                <strong>Условие:</strong> Ребро куба равно 5 см. Найдите объем куба и площадь его полной поверхности.
+                            </div>
+                            <div class="task-solution">
+                                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                                <div class="solution-content">
+                                    <strong>Решение:</strong><br>
+                                    1) Объем: V = a³ = 5³ = 125 см³<br>
+                                    2) Площадь поверхности: S = 6a² = 6·25 = 150 см²<br>
+                                    <div class="task-answer">Ответ: V = 125 см³, S = 150 см²</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Куб — Задача №2</h3>
+                            <span class="task-number">Средний уровень</span>
+                            <span class="task-difficulty difficulty-medium">★★☆</span>
+                        </div>
+                        <div class="task-body">
+                            <div class="task-condition">
+                                <strong>Условие:</strong> Диагональ куба равна 12√3 см. Найдите объем куба.
+                            </div>
+                            <div class="task-solution">
+                                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                                <div class="solution-content">
+                                    <strong>Решение:</strong><br>
+                                    1) Диагональ куба: d = a√3 ⇒ a = d/√3 = 12√3/√3 = 12 см<br>
+                                    2) Объем: V = a³ = 12³ = 1728 см³<br>
+                                    <div class="task-answer">Ответ: V = 1728 см³</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Куб — Задача №3</h3>
+                            <span class="task-number">Сложный уровень</span>
+                            <span class="task-difficulty difficulty-hard">★★★</span>
+                        </div>
+                        <div class="task-body">
+                            <div class="task-condition">
+                                <strong>Условие:</strong> Площадь полной поверхности куба равна 216 см². Найдите диагональ куба.
+                            </div>
+                            <div class="task-solution">
+                                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                                <div class="solution-content">
+                                    <strong>Решение:</strong><br>
+                                    1) S = 6a² = 216 ⇒ a² = 36 ⇒ a = 6 см<br>
+                                    2) Диагональ: d = a√3 = 6√3 см<br>
+                                    <div class="task-answer">Ответ: d = 6√3 см</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ==================== ШЕСТИУГОЛЬНАЯ ПРИЗМА ==================== -->
+            <div class="task-category">
+                <div class="category-header">
+                    <h2>Шестиугольная призма</h2>
+                    <span class="category-badge">3 задачи</span>
+                </div>
+                <div class="tasks-grid">
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Шестиугольная призма — №1</h3>
+                            <span class="task-number">Легкий уровень</span>
+                            <span class="task-difficulty difficulty-easy">★☆☆</span>
+                        </div>
+                        <div class="task-body">
+                            <div class="task-condition">
+                                <strong>Условие:</strong> В правильной шестиугольной призме сторона основания равна 4 см, высота равна 7 см. Найдите площадь боковой поверхности.
+                            </div>
+                            <div class="task-solution">
+                                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                                <div class="solution-content">
+                                    <strong>Решение:</strong><br>
+                                    1) Периметр основания: P = 6·4 = 24 см<br>
+                                    2) Sбок = P·h = 24·7 = 168 см²<br>
+                                    <div class="task-answer">Ответ: Sбок = 168 см²</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Шестиугольная призма — №2</h3>
+                            <span class="task-number">Средний уровень</span>
+                            <span class="task-difficulty difficulty-medium">★★☆</span>
+                        </div>
+                        <div class="task-body">
+                            <div class="task-condition">
+                                <strong>Условие:</strong> В правильной шестиугольной призме сторона основания равна 6 см, высота равна 10 см. Найдите объем призмы.
+                            </div>
+                            <div class="task-solution">
+                                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                                <div class="solution-content">
+                                    <strong>Решение:</strong><br>
+                                    1) Площадь правильного шестиугольника: Sосн = (3√3/2)·a² = (3√3/2)·36 = 54√3 см²<br>
+                                    2) Объем: V = Sосн·h = 54√3·10 = 540√3 см³<br>
+                                    <div class="task-answer">Ответ: V = 540√3 см³</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Шестиугольная призма — №3</h3>
+                            <span class="task-number">Сложный уровень</span>
+                            <span class="task-difficulty difficulty-hard">★★★</span>
+                        </div>
+                        <div class="task-body">
+                            <div class="task-condition">
+                                <strong>Условие:</strong> Площадь боковой поверхности правильной шестиугольной призмы равна 360 см², высота равна 10 см. Найдите площадь полной поверхности призмы.
+                            </div>
+                            <div class="task-solution">
+                                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                                <div class="solution-content">
+                                    <strong>Решение:</strong><br>
+                                    1) Sбок = P·h ⇒ P = Sбок/h = 360/10 = 36 см<br>
+                                    2) Сторона основания: a = P/6 = 6 см<br>
+                                    3) Sосн = (3√3/2)·a² = (3√3/2)·36 = 54√3 см²<br>
+                                    4) Sполн = Sбок + 2Sосн = 360 + 108√3 см²<br>
+                                    <div class="task-answer">Ответ: Sполн = 360 + 108√3 см²</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ==================== ТЕТРАЭДР ==================== -->
+            <div class="task-category">
+                <div class="category-header">
+                    <h2>Тетраэдр</h2>
+                    <span class="category-badge">3 задачи</span>
+                </div>
+                <div class="tasks-grid">
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Тетраэдр — Задача №1</h3>
+                            <span class="task-number">Легкий уровень</span>
+                            <span class="task-difficulty difficulty-easy">★☆☆</span>
+                        </div>
+                        <div class="task-body">
+                            <div class="task-condition">
+                                <strong>Условие:</strong> Ребро правильного тетраэдра равно 8 см. Найдите площадь полной поверхности.
+                            </div>
+                            <div class="task-solution">
+                                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                                <div class="solution-content">
+                                    <strong>Решение:</strong><br>
+                                    1) S = a²√3 = 64·1.732 = 110.85 см²<br>
+                                    Точное значение: S = 64√3 см²<br>
+                                    <div class="task-answer">Ответ: S = 64√3 см²</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Тетраэдр — Задача №2</h3>
+                            <span class="task-number">Средний уровень</span>
+                            <span class="task-difficulty difficulty-medium">★★☆</span>
+                        </div>
+                        <div class="task-body">
+                            <div class="task-condition">
+                                <strong>Условие:</strong> Объем правильного тетраэдра равен 18√2 см³. Найдите ребро тетраэдра.
+                            </div>
+                            <div class="task-solution">
+                                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                                <div class="solution-content">
+                                    <strong>Решение:</strong><br>
+                                    1) V = a³√2/12 = 18√2 ⇒ a³/12 = 18 ⇒ a³ = 216 ⇒ a = 6 см<br>
+                                    <div class="task-answer">Ответ: a = 6 см</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Тетраэдр — Задача №3</h3>
+                            <span class="task-number">Сложный уровень</span>
+                            <span class="task-difficulty difficulty-hard">★★★</span>
+                        </div>
+                        <div class="task-body">
+                            <div class="task-condition">
+                                <strong>Условие:</strong> Высота правильного тетраэдра равна 4√6 см. Найдите объем тетраэдра.
+                            </div>
+                            <div class="task-solution">
+                                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                                <div class="solution-content">
+                                    <strong>Решение:</strong><br>
+                                    1) Высота тетраэдра: h = a√(2/3) ⇒ a = h·√(3/2) = 4√6·√(3/2) = 4√9 = 12 см<br>
+                                    2) V = a³√2/12 = 1728√2/12 = 144√2 см³<br>
+                                    <div class="task-answer">Ответ: V = 144√2 см³</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ==================== ОКТАЭДР ==================== -->
+            <div class="task-category">
+                <div class="category-header">
+                    <h2>Октаэдр</h2>
+                    <span class="category-badge">3 задачи</span>
+                </div>
+                <div class="tasks-grid">
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Октаэдр — Задача №1</h3>
+                            <span class="task-number">Легкий уровень</span>
+                            <span class="task-difficulty difficulty-easy">★☆☆</span>
+                        </div>
+                        <div class="task-body">
+                            <div class="task-condition">
+                                <strong>Условие:</strong> Ребро правильного октаэдра равно 5 см. Найдите площадь полной поверхности.
+                            </div>
+                            <div class="task-solution">
+                                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                                <div class="solution-content">
+                                    <strong>Решение:</strong><br>
+                                    1) S = 2a²√3 = 2·25·1.732 = 86.6 см²<br>
+                                    Точное значение: S = 50√3 см²<br>
+                                    <div class="task-answer">Ответ: S = 50√3 см²</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Октаэдр — Задача №2</h3>
+                            <span class="task-number">Средний уровень</span>
+                            <span class="task-difficulty difficulty-medium">★★☆</span>
+                        </div>
+                        <div class="task-body">
+                            <div class="task-condition">
+                                <strong>Условие:</strong> Объем правильного октаэдра равен 72√2 см³. Найдите ребро октаэдра.
+                            </div>
+                            <div class="task-solution">
+                                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                                <div class="solution-content">
+                                    <strong>Решение:</strong><br>
+                                    1) V = a³√2/3 = 72√2 ⇒ a³/3 = 72 ⇒ a³ = 216 ⇒ a = 6 см<br>
+                                    <div class="task-answer">Ответ: a = 6 см</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Октаэдр — Задача №3</h3>
+                            <span class="task-number">Сложный уровень</span>
+                            <span class="task-difficulty difficulty-hard">★★★</span>
+                        </div>
+                        <div class="task-body">
+                            <div class="task-condition">
+                                <strong>Условие:</strong> Площадь полной поверхности октаэдра равна 200√3 см². Найдите объем октаэдра.
+                            </div>
+                            <div class="task-solution">
+                                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                                <div class="solution-content">
+                                    <strong>Решение:</strong><br>
+                                    1) S = 2a²√3 = 200√3 ⇒ 2a² = 200 ⇒ a² = 100 ⇒ a = 10 см<br>
+                                    2) V = a³√2/3 = 1000√2/3 см³<br>
+                                    <div class="task-answer">Ответ: V = (1000√2)/3 см³</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ==================== ПИРАМИДА ==================== -->
+            <div class="task-category">
+                <div class="category-header">
+                    <h2>Пирамида</h2>
+                    <span class="category-badge">3 задачи</span>
+                </div>
+                <div class="tasks-grid">
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Пирамида — Задача №1</h3>
+                            <span class="task-number">Легкий уровень</span>
+                            <span class="task-difficulty difficulty-easy">★☆☆</span>
+                        </div>
+                        <div class="task-body">
+                            <div class="task-condition">
+                                <strong>Условие:</strong> В правильной четырехугольной пирамиде сторона основания равна 8 см, высота равна 6 см. Найдите объем пирамиды.
+                            </div>
+                            <div class="task-solution">
+                                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                                <div class="solution-content">
+                                    <strong>Решение:</strong><br>
+                                    1) Sосн = a² = 64 см²<br>
+                                    2) V = ⅓·Sосн·h = ⅓·64·6 = 128 см³<br>
+                                    <div class="task-answer">Ответ: V = 128 см³</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Пирамида — Задача №2</h3>
+                            <span class="task-number">Средний уровень</span>
+                            <span class="task-difficulty difficulty-medium">★★☆</span>
+                        </div>
+                        <div class="task-body">
+                            <div class="task-condition">
+                                <strong>Условие:</strong> В правильной четырехугольной пирамиде апофема равна 10 см, сторона основания равна 12 см. Найдите высоту пирамиды.
+                            </div>
+                            <div class="task-solution">
+                                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                                <div class="solution-content">
+                                    <strong>Решение:</strong><br>
+                                    1) Радиус вписанной окружности: r = a/2 = 6 см<br>
+                                    2) По теореме Пифагора: h = √(l² - r²) = √(100 - 36) = √64 = 8 см<br>
+                                    <div class="task-answer">Ответ: h = 8 см</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Пирамида — Задача №3</h3>
+                            <span class="task-number">Сложный уровень</span>
+                            <span class="task-difficulty difficulty-hard">★★★</span>
+                        </div>
+                        <div class="task-body">
+                            <div class="task-condition">
+                                <strong>Условие:</strong> Объем правильной четырехугольной пирамиды равен 400 см³, высота равна 12 см. Найдите сторону основания и апофему.
+                            </div>
+                            <div class="task-solution">
+                                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                                <div class="solution-content">
+                                    <strong>Решение:</strong><br>
+                                    1) V = ⅓·a²·h ⇒ a² = 3V/h = 1200/12 = 100 ⇒ a = 10 см<br>
+                                    2) r = a/2 = 5 см, h = 12 см ⇒ l = √(h² + r²) = √(144 + 25) = √169 = 13 см<br>
+                                    <div class="task-answer">Ответ: a = 10 см, l = 13 см</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ==================== КОНУС ==================== -->
+            <div class="task-category">
+                <div class="category-header">
+                    <h2>Конус</h2>
+                    <span class="category-badge">3 задачи</span>
+                </div>
+                <div class="tasks-grid">
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Конус — Задача №1</h3>
+                            <span class="task-number">Легкий уровень</span>
+                            <span class="task-difficulty difficulty-easy">★☆☆</span>
+                        </div>
+                        <div class="task-body">
+                            <div class="task-condition">
+                                <strong>Условие:</strong> Радиус основания конуса равен 3 см, высота равна 4 см. Найдите образующую и объем конуса.
+                            </div>
+                            <div class="task-solution">
+                                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                                <div class="solution-content">
+                                    <strong>Решение:</strong><br>
+                                    1) Образующая: l = √(R² + h²) = √(9 + 16) = √25 = 5 см<br>
+                                    2) Объем: V = ⅓·πR²h = ⅓·π·9·4 = 12π см³<br>
+                                    <div class="task-answer">Ответ: l = 5 см, V = 12π см³</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Конус — Задача №2</h3>
+                            <span class="task-number">Средний уровень</span>
+                            <span class="task-difficulty difficulty-medium">★★☆</span>
+                        </div>
+                        <div class="task-body">
+                            <div class="task-condition">
+                                <strong>Условие:</strong> Площадь боковой поверхности конуса равна 65π см², образующая равна 13 см. Найдите радиус основания и высоту.
+                            </div>
+                            <div class="task-solution">
+                                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                                <div class="solution-content">
+                                    <strong>Решение:</strong><br>
+                                    1) Sбок = πRl = 65π ⇒ R·13 = 65 ⇒ R = 5 см<br>
+                                    2) h = √(l² - R²) = √(169 - 25) = √144 = 12 см<br>
+                                    <div class="task-answer">Ответ: R = 5 см, h = 12 см</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Конус — Задача №3</h3>
+                            <span class="task-number">Сложный уровень</span>
+                            <span class="task-difficulty difficulty-hard">★★★</span>
+                        </div>
+                        <div class="task-body">
+                            <div class="task-condition">
+                                <strong>Условие:</strong> Объем конуса равен 100π см³, высота равна 12 см. Найдите площадь боковой поверхности конуса.
+                            </div>
+                            <div class="task-solution">
+                                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                                <div class="solution-content">
+                                    <strong>Решение:</strong><br>
+                                    1) V = ⅓·πR²h = 100π ⇒ R² = 300/12 = 25 ⇒ R = 5 см<br>
+                                    2) l = √(R² + h²) = √(25 + 144) = √169 = 13 см<br>
+                                    3) Sбок = πRl = π·5·13 = 65π см²<br>
+                                    <div class="task-answer">Ответ: Sбок = 65π см²</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ==================== ЦИЛИНДР ==================== -->
+            <div class="task-category">
+                <div class="category-header">
+                    <h2>Цилиндр</h2>
+                    <span class="category-badge">3 задачи</span>
+                </div>
+                <div class="tasks-grid">
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Цилиндр — Задача №1</h3>
+                            <span class="task-number">Легкий уровень</span>
+                            <span class="task-difficulty difficulty-easy">★☆☆</span>
+                        </div>
+                        <div class="task-body">
+                            <div class="task-condition">
+                                <strong>Условие:</strong> Радиус основания цилиндра равен 4 см, высота равна 7 см. Найдите площадь боковой поверхности и объем.
+                            </div>
+                            <div class="task-solution">
+                                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                                <div class="solution-content">
+                                    <strong>Решение:</strong><br>
+                                    1) Sбок = 2πRh = 2π·4·7 = 56π см²<br>
+                                    2) V = πR²h = π·16·7 = 112π см³<br>
+                                    <div class="task-answer">Ответ: Sбок = 56π см², V = 112π см³</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Цилиндр — Задача №2</h3>
+                            <span class="task-number">Средний уровень</span>
+                            <span class="task-difficulty difficulty-medium">★★☆</span>
+                        </div>
+                        <div class="task-body">
+                            <div class="task-condition">
+                                <strong>Условие:</strong> Площадь полной поверхности цилиндра равна 90π см², радиус основания равен 5 см. Найдите высоту цилиндра.
+                            </div>
+                            <div class="task-solution">
+                                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                                <div class="solution-content">
+                                    <strong>Решение:</strong><br>
+                                    1) Sполн = 2πR(R + h) = 90π ⇒ 2·5·(5 + h) = 90 ⇒ 10(5 + h) = 90 ⇒ 5 + h = 9 ⇒ h = 4 см<br>
+                                    <div class="task-answer">Ответ: h = 4 см</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Цилиндр — Задача №3</h3>
+                            <span class="task-number">Сложный уровень</span>
+                            <span class="task-difficulty difficulty-hard">★★★</span>
+                        </div>
+                        <div class="task-body">
+                            <div class="task-condition">
+                                <strong>Условие:</strong> Объем цилиндра равен 108π см³, высота в 3 раза больше радиуса. Найдите радиус и высоту.
+                            </div>
+                            <div class="task-solution">
+                                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                                <div class="solution-content">
+                                    <strong>Решение:</strong><br>
+                                    1) h = 3R<br>
+                                    2) V = πR²·3R = 3πR³ = 108π ⇒ R³ = 36 ⇒ R = ∛36 см<br>
+                                    3) h = 3∛36 см<br>
+                                    <div class="task-answer">Ответ: R = ∛36 см, h = 3∛36 см</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ==================== СФЕРА / ШАР ==================== -->
+            <div class="task-category">
+                <div class="category-header">
+                    <h2>Сфера / Шар</h2>
+                    <span class="category-badge">3 задачи</span>
+                </div>
+                <div class="tasks-grid">
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Шар — Задача №1</h3>
+                            <span class="task-number">Легкий уровень</span>
+                            <span class="task-difficulty difficulty-easy">★☆☆</span>
+                        </div>
+                        <div class="task-body">
+                            <div class="task-condition">
+                                <strong>Условие:</strong> Радиус шара равен 6 см. Найдите площадь поверхности сферы и объем шара.
+                            </div>
+                            <div class="task-solution">
+                                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                                <div class="solution-content">
+                                    <strong>Решение:</strong><br>
+                                    1) S = 4πR² = 4π·36 = 144π см²<br>
+                                    2) V = ⁴⁄₃·πR³ = ⁴⁄₃·π·216 = 288π см³<br>
+                                    <div class="task-answer">Ответ: S = 144π см², V = 288π см³</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Шар — Задача №2</h3>
+                            <span class="task-number">Средний уровень</span>
+                            <span class="task-difficulty difficulty-medium">★★☆</span>
+                        </div>
+                        <div class="task-body">
+                            <div class="task-condition">
+                                <strong>Условие:</strong> Площадь поверхности шара равна 256π см². Найдите радиус и объем шара.
+                            </div>
+                            <div class="task-solution">
+                                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                                <div class="solution-content">
+                                    <strong>Решение:</strong><br>
+                                    1) S = 4πR² = 256π ⇒ R² = 64 ⇒ R = 8 см<br>
+                                    2) V = ⁴⁄₃·π·512 = (2048π)/3 см³<br>
+                                    <div class="task-answer">Ответ: R = 8 см, V = (2048π)/3 см³</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Шар — Задача №3</h3>
+                            <span class="task-number">Сложный уровень</span>
+                            <span class="task-difficulty difficulty-hard">★★★</span>
+                        </div>
+                        <div class="task-body">
+                            <div class="task-condition">
+                                <strong>Условие:</strong> Объем шара равен 36π см³. Шар вписан в куб. Найдите объем куба.
+                            </div>
+                            <div class="task-solution">
+                                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                                <div class="solution-content">
+                                    <strong>Решение:</strong><br>
+                                    1) Vш = ⁴⁄₃·πR³ = 36π ⇒ R³ = 27 ⇒ R = 3 см<br>
+                                    2) Для вписанного шара: a = 2R = 6 см<br>
+                                    3) Vкуба = a³ = 216 см³<br>
+                                    <div class="task-answer">Ответ: Vкуба = 216 см³</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Справочная информация -->
+            <!-- Справочная информация -->
+            <div class="info-panel" style="margin-top: 40px;">
+                <h2>Справочные формулы</h2>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 20px;">
+                    <div style="background: #eef2f5; padding: 10px; border-radius: 8px;"><strong>Куб</strong><br>S = 6a², V = a³</div>
+                    <div style="background: #eef2f5; padding: 10px; border-radius: 8px;"><strong>Треугольная призма</strong><br>Sбок = P·h, V = Sосн·h</div>
+                    <div style="background: #eef2f5; padding: 10px; border-radius: 8px;"><strong>Шестиугольная призма</strong><br>Sосн = (3√3/2)·a²</div>
+                    <div style="background: #eef2f5; padding: 10px; border-radius: 8px;"><strong>Тетраэдр</strong><br>S = a²√3, V = a³√2/12</div>
+                    <div style="background: #eef2f5; padding: 10px; border-radius: 8px;"><strong>Октаэдр</strong><br>S = 2a²√3, V = a³√2/3</div>
+                    <div style="background: #eef2f5; padding: 10px; border-radius: 8px;"><strong>Пирамида</strong><br>V = ⅓·Sосн·h</div>
+                    <div style="background: #eef2f5; padding: 10px; border-radius: 8px;"><strong>Конус</strong><br>Sбок = πRl, V = ⅓·πR²h</div>
+                    <div style="background: #eef2f5; padding: 10px; border-radius: 8px;"><strong>Цилиндр</strong><br>Sбок = 2πRh, V = πR²h</div>
+                    <div style="background: #eef2f5; padding: 10px; border-radius: 8px;"><strong>Шар</strong><br>S = 4πR², V = ⁴⁄₃·πR³</div>
+                </div>
+                <p style="margin-top: 15px; font-size: 0.85rem; color: #666;">→ Подробнее на странице <a href="formulas.html" style="color: #3a6ea5;">Формулы</a></p>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>© 2026 Стереометрия в 3D | Вращайте модели мышкой</p>
+    </footer>
+    
+    <script src="js/main.js"></script>
+    <script>
+        function toggleSolution(btn) {
+            const solutionContent = btn.parentElement.querySelector('.solution-content');
+            solutionContent.classList.toggle('show');
+            btn.textContent = solutionContent.classList.contains('show') ? 'Скрыть решение' : 'Показать решение';
+        }
+    </script>
+</body>
+</html>
