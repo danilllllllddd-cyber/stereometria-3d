@@ -208,6 +208,8 @@
                         <li><a href="models/prism.html">Призма</a></li>
                         <li><a href="models/tetra.html">Тетраэдр</a></li>
                         <li><a href="models/octa.html">Октаэдр</a></li>
+                        <li><a href="models/dodeca.html">Додекаэдр</a></li>
+                        <li><a href="models/icosa.html">Икосаэдр</a></li>
                         <li><a href="models/pyramid.html">Пирамида</a></li>
                         <li><a href="models/cone.html">Конус</a></li>
                         <li><a href="models/cylinder.html">Цилиндр</a></li>
@@ -528,6 +530,169 @@
                 </div>
             </div>
             
+            <!-- ==================== ДОДЕКАЭДР ==================== -->
+            <div class="task-category">
+                <div class="category-header">
+                    <h2>Додекаэдр</h2>
+                    <span class="category-badge">3 задачи</span>
+                </div>
+                <div class="tasks-grid">
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Додекаэдр — Задача №1</h3>
+                            <span class="task-number">Легкий уровень</span>
+                            <span class="task-difficulty difficulty-easy">★☆☆</span>
+                        </div>
+                        <div class="task-body">
+                            <div class="task-condition">
+                                <strong>Условие:</strong> Ребро правильного додекаэдра равно 2 см. Найдите площадь полной поверхности додекаэдра.
+                            </div>
+                            <div class="task-solution">
+                                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                                <div class="solution-content">
+                                    <strong>Решение:</strong><br>
+                                    1) Формула площади поверхности додекаэдра: S = 3a²√(25 + 10√5)<br>
+                                    2) a² = 4<br>
+                                    3) S = 3·4·√(25 + 10√5) = 12√(25 + 10√5) см²<br>
+                                    <div class="task-answer">Ответ: S = 12√(25 + 10√5) см²</div>
+                                    <div class="task-answer">Приближенное значение: √(25 + 10·2.236) = √(25 + 22.36) = √47.36 ≈ 6.88, S ≈ 12·6.88 ≈ 82.56 см²</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Додекаэдр — Задача №2</h3>
+                            <span class="task-number">Средний уровень</span>
+                            <span class="task-difficulty difficulty-medium">★★☆</span>
+                        </div>
+                        <div class="task-body">
+                            <div class="task-condition">
+                                <strong>Условие:</strong> Объем правильного додекаэдра равен 60(15 + 7√5) см³. Найдите ребро додекаэдра.
+                            </div>
+                            <div class="task-solution">
+                                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                                <div class="solution-content">
+                                    <strong>Решение:</strong><br>
+                                    1) Формула объема додекаэдра: V = a³(15 + 7√5)/4<br>
+                                    2) 60(15 + 7√5) = a³(15 + 7√5)/4<br>
+                                    3) Умножим обе части на 4: 240(15 + 7√5) = a³(15 + 7√5)<br>
+                                    4) Разделим на (15 + 7√5): a³ = 240<br>
+                                    5) a = ∛240 = 2∛30 см<br>
+                                    <div class="task-answer">Ответ: a = ∛240 = 2∛30 см</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Додекаэдр — Задача №3</h3>
+                            <span class="task-number">Сложный уровень</span>
+                            <span class="task-difficulty difficulty-hard">★★★</span>
+                        </div>
+                        <div class="task-body">
+                            <div class="task-condition">
+                                <strong>Условие:</strong> Радиус описанной сферы вокруг правильного додекаэдра равен 3√3(1 + √5)/4 см. Найдите объем додекаэдра.
+                            </div>
+                            <div class="task-solution">
+                                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                                <div class="solution-content">
+                                    <strong>Решение:</strong><br>
+                                    1) Формула радиуса описанной сферы додекаэдра: R = a√3(1 + √5)/4<br>
+                                    2) По условию R = 3√3(1 + √5)/4 ⇒ a = 3 см<br>
+                                    3) V = a³(15 + 7√5)/4 = 27(15 + 7√5)/4 = (405 + 189√5)/4 см³<br>
+                                    <div class="task-answer">Ответ: V = (405 + 189√5)/4 см³</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== ИКОСАЭДР ==================== -->
+            <div class="task-category">
+                <div class="category-header">
+                    <h2>Икосаэдр</h2>
+                    <span class="category-badge">3 задачи</span>
+                </div>
+                <div class="tasks-grid">
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Икосаэдр — Задача №1</h3>
+                            <span class="task-number">Легкий уровень</span>
+                            <span class="task-difficulty difficulty-easy">★☆☆</span>
+                        </div>
+                        <div class="task-body">
+                            <div class="task-condition">
+                                <strong>Условие:</strong> Ребро правильного икосаэдра равно 6 см. Найдите площадь полной поверхности икосаэдра.
+                            </div>
+                            <div class="task-solution">
+                                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                                <div class="solution-content">
+                                    <strong>Решение:</strong><br>
+                                    1) Формула площади поверхности икосаэдра: S = 5a²√3<br>
+                                    2) a² = 36<br>
+                                    3) S = 5·36·√3 = 180√3 см²<br>
+                                    <div class="task-answer">Ответ: S = 180√3 см²</div>
+                                    <div class="task-answer">Приближенное значение: 180·1.732 ≈ 311.76 см²</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Икосаэдр — Задача №2</h3>
+                            <span class="task-number">Средний уровень</span>
+                            <span class="task-difficulty difficulty-medium">★★☆</span>
+                        </div>
+                        <div class="task-body">
+                            <div class="task-condition">
+                                <strong>Условие:</strong> Объем правильного икосаэдра равен 500(3 + √5)/12 см³. Найдите ребро икосаэдра.
+                            </div>
+                            <div class="task-solution">
+                                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                                <div class="solution-content">
+                                    <strong>Решение:</strong><br>
+                                    1) Формула объема икосаэдра: V = 5a³(3 + √5)/12<br>
+                                    2) 500(3 + √5)/12 = 5a³(3 + √5)/12<br>
+                                    3) Умножим на 12: 500(3 + √5) = 5a³(3 + √5)<br>
+                                    4) Разделим на (3 + √5): 500 = 5a³<br>
+                                    5) a³ = 100 ⇒ a = ∛100 = ∛(4·25) = ∛100 см<br>
+                                    <div class="task-answer">Ответ: a = ∛100 см</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <div class="task-header">
+                            <h3>Икосаэдр — Задача №3</h3>
+                            <span class="task-number">Сложный уровень</span>
+                            <span class="task-difficulty difficulty-hard">★★★</span>
+                        </div>
+                        <div class="task-body">
+                            <div class="task-condition">
+                                <strong>Условие:</strong> Площадь поверхности правильного икосаэдра равна 180√3 см². Найдите объем икосаэдра.
+                            </div>
+                            <div class="task-solution">
+                                <button class="solution-btn" onclick="toggleSolution(this)">Показать решение</button>
+                                <div class="solution-content">
+                                    <strong>Решение:</strong><br>
+                                    1) S = 5a²√3 = 180√3 ⇒ 5a² = 180 ⇒ a² = 36 ⇒ a = 6 см<br>
+                                    2) V = 5a³(3 + √5)/12 = 5·216·(3 + √5)/12 = 1080·(3 + √5)/12 = 90(3 + √5) см³<br>
+                                    3) V = 270 + 90√5 см³<br>
+                                    <div class="task-answer">Ответ: V = 90(3 + √5) см³ = 270 + 90√5 см³</div>
+                                    <div class="task-answer">Приближенное значение: 270 + 90·2.236 = 270 + 201.24 = 471.24 см³</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- ==================== ПИРАМИДА ==================== -->
             <div class="task-category">
                 <div class="category-header">
@@ -840,6 +1005,8 @@
                     <div style="background: #eef2f5; padding: 10px; border-radius: 8px;"><strong>Шестиугольная призма</strong><br>Sосн = (3√3/2)·a²</div>
                     <div style="background: #eef2f5; padding: 10px; border-radius: 8px;"><strong>Тетраэдр</strong><br>S = a²√3, V = a³√2/12</div>
                     <div style="background: #eef2f5; padding: 10px; border-radius: 8px;"><strong>Октаэдр</strong><br>S = 2a²√3, V = a³√2/3</div>
+                    <div style="background: #eef2f5; padding: 10px; border-radius: 8px;"><strong>Додекаэдр</strong><br>S = 3a²√(25+10√5), V = a³(15+7√5)/4</div>
+                    <div style="background: #eef2f5; padding: 10px; border-radius: 8px;"><strong>Икосаэдр</strong><br>S = 5a²√3, V = 5a³(3+√5)/12</div>
                     <div style="background: #eef2f5; padding: 10px; border-radius: 8px;"><strong>Пирамида</strong><br>V = ⅓·Sосн·h</div>
                     <div style="background: #eef2f5; padding: 10px; border-radius: 8px;"><strong>Конус</strong><br>Sбок = πRl, V = ⅓·πR²h</div>
                     <div style="background: #eef2f5; padding: 10px; border-radius: 8px;"><strong>Цилиндр</strong><br>Sбок = 2πRh, V = πR²h</div>
